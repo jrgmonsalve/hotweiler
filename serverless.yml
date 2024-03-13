@@ -1,0 +1,15 @@
+service: hotweiler
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-1
+
+functions:
+  ai-chat:
+    handler: handler.hello
+    events:
+      - http:
+          path: ai/chat
+          method: post
