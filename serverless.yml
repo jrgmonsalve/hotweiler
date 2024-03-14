@@ -5,11 +5,12 @@ provider:
   runtime: python3.8
   stage: prod
   region: us-east-1
-  apiKeys:
-    - pwaApiKey
   environment:
     COGNITO_USER_POOL_ID:
       Ref: CognitoUserPool
+  apiGateway:
+    apiKeys:
+        - name: pwaApiKey
 
 functions:
   ai-chat:
