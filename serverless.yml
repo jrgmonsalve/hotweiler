@@ -14,7 +14,7 @@ provider:
 
 functions:
   ai-chat:
-    handler: handler.hello
+    handler: infrastructure.handler.ask
     events:
       - http:
           path: ai/chat
