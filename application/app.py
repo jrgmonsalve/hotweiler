@@ -5,7 +5,7 @@ class App:
     def __init__(self):
         pass
 
-    def ask(self):
+    def talk(self):
 
         return {
             "statusCode": 200,
