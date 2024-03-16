@@ -1,19 +1,10 @@
 import { Handler } from 'aws-lambda';
+import { App } from './App';
 
 export const talk: Handler = (event: any) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
-
-  return new Promise((resolve) => {
-    resolve(response)
-  })
+    const app = new App(event);
+    const response = app.start();
+    return new Promise((resolve) => {
+        resolve(response)
+    })
 }
