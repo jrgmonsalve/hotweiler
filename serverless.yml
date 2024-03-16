@@ -2,7 +2,7 @@ service: hotweiler
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: nodejs12.x
   stage: prod
   region: us-east-1
   environment:
@@ -14,10 +14,10 @@ provider:
 
 functions:
   ai-chat:
-    handler: infrastructure.handler.talk
+    handler: application/handler.talk
     events:
       - http:
-          path: ai/chat
+          path: ai/chat/talk
           method: post
           cors: true
           private: true
@@ -42,3 +42,11 @@ resources:
         ExplicitAuthFlows:
           - ALLOW_USER_PASSWORD_AUTH
           - ALLOW_REFRESH_TOKEN_AUTH
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+
+custom:
+  serverless-offline:
+    httpPort: 3000
